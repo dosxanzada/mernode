@@ -1,0 +1,72 @@
+extends layout
+
+block content
+
+    h5.display-4 index page
+    ul.list-group
+        each article, i in articles
+            li.list-group-item
+                a(href="/articles/"+article._id)= article.title
+
+
+    .backg
+        .container
+            .row
+                .div.col-md-8.pt-5
+                    h1.mt-5 SmartBilim
+                    h2 - жаңа білімге апарар жол!
+                    br
+                    p
+                        | Қашықтықтан оқытуды басқаруға арналған жаңа жоба. 
+                        br
+                        | Білім алуды қазір бастаңыз
+    h2.courses.text-center.mt-5.mb-5 Оқу курстары
+    .container
+        .card-deck
+            .card
+                img.card-img-top(src="/img/card5.jpg" alt="...")
+                .card-body
+                    h5.card-title Python бағдарламалау тілі
+                    p.card-text Python тілінде бағдарламалау негіздері және алгоритмдер
+                    p.card-text
+                        small.text-muted Авторы: Пәленше Түгенше
+            .card
+                img.card-img-top(src="/img/card3.jpg" alt="...")
+                .card-body
+                    h5.card-title Компьютерлік сауаттылық
+                    p.card-text Компьютерлік сауаттылықты бірге үйренейік! Windows, Microsoft Office
+                    p.card-text
+                        small.text-muted Авторы: Стив Джобс
+            .card
+                img.card-img-top(src="/img/card1.jpg" alt="...")
+                .card-body
+                    h5.card-title Бухгалтер негізі
+                    p.card-text Есепші болып жұмыс істеуді армандап жүрген болсаңыз, бізге қосылыңыз.
+                    p.card-text
+                        small.text-muted Авторы: Алматы
+        .text-center.mt-3.mb-5
+            button.btn.btn-outline-primary.my-2.my-sm-0(type="submit")
+                | Барлық курстар
+    .div.info.pt-5.pb-5
+        h2.courses.text-center.mb-5 Жоба туралы
+        .container
+            .row
+                .div.col-md-6.infoimg
+                    img(src="/img/qwert.jpg" alt="")
+                .div.col-md-6
+                    h4 SmartBilim - жаңа білімге апарар жол
+                    p
+                        | Жобаның мақсаты – қазіргі уақыт талабына сай, білім алмасу процесін жеңіл ететін, тек білім ордасында ғана емес, сонымен қатар өндірісте, завод немесе компания қызметкерлеріне білім беруді қашықтықтан басқаруды ұйымдастыратын жүйе құру.
+                        | Жобаның өзектілігі – білім алмасу процесінде цифрлы технологияларды пайдалану, қашықтықтан білім алмасуды ұйымдастыру – әртүрлі шығындар мен адами ресурстарды үнемдеуге, адам уақытын тиімді пайдалануға көмектеседі.
+    .div.sig.pt-5.pb-5
+        .container
+            h2.courses.text-center.mb-5 Жобаға қосылу
+            .row.sig1
+                .col-md-6
+                    .card
+                        .card-body.stud-card
+                            a(href="") Студент ретінде тіркелу
+                .col-md-6
+                    .card
+                        .card-body.teach-card
+                            a(href="") Мұғалім ретінде тіркелу
