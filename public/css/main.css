@@ -32,58 +32,163 @@ h2 {
     background: rgba(0, 123, 255, 0.1);
 }
 
-.infoimg{
+.infoimg {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.infoimg img{
-    width: 70%;    
+
+
+.infoimg img {
+    width: 70%;
+    border-radius: 1%;
 }
 
-.sig img{
+.sig img {
     width: 15%;
 }
 
-.sig a{
+.sig a {
     font-size: 20px;
 }
 
-.sig1{
+.sig1 {
     display: flex;
     flex-direction: row;
     align-content: space-between;
 }
 
-.stud-card{
+.stud-card {
     height: 15vh;
     background: url(../img/stud.png) no-repeat center left;
-    background-size: 50%;   
+    background-size: 50%;
 }
 
-.stud-card a{
+.stud-card a {
     position: absolute;
     right: 25px;
     top: 30%;
 }
 
-.teach-card{
+.teach-card {
     height: 15vh;
     background: url(../img/teacher.png) no-repeat center left;
-    background-size: 50%;   
+    background-size: 50%;
 }
 
-.teach-card a{
+.teach-card a {
     position: absolute;
     right: 25px;
     top: 30%;
 }
 
-footer{
+footer {
     background: #f8f9fa;
 }
 
 .delete-art-btn {
     margin-left: 15px;
+}
+
+.alerting {
+    width: 350px;
+    position: fixed;
+    right: 15px;
+    top: 75px;
+    z-index: 999;
+}
+
+.btn-success {
+    margin-left: 15px;
+}
+
+.alert-error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.alert-success_msg {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input{
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.logo-anim {
+    display: flex;
+    justify-content: center;
+    margin: 35px 25px;
+}
+
+.form-signin p,
+a {
+    font-size: 18px;
+}
+
+.art-deck{
+    display: flex;
+}
+
+.coursss{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.coursss .card{
+    margin: 0 15px;
+    width: 100%;
+}
+
+.card-footer.text-muted p{
+    margin-bottom: 0;
+}
+
+.profile-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img .card-img-top{
+    text-align: center;
+    border-radius: 50%;
+    width: 50%;
+}
+
+.articlebck{
+    width: 100%;
+    background: url("../img/artimg2.jpg") center center no-repeat;
+    background-size: cover;
 }

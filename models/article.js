@@ -12,6 +12,10 @@ let acticleSchema = new mongoose.Schema({
     author: {
         type: String,
         required: true
+    },
+    articleImage:{
+        type: String,
+        required: false
     }
 });
 

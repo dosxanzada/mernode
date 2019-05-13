@@ -5,9 +5,12 @@ const bodyParser = require("body-parser");
 const expressValidator = require("express-validator");
 const flash = require("connect-flash");
 const session = require("express-session");
+const passport = require('passport');
 
+const config = require('./config/database');
 
-mongoose.connect("mongodb://localhost:27017/mernode");
+mongoose.connect(config.database, { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true)
 let db = mongoose.connection;
 
 db.once("open", function () {
@@ -63,6 +66,16 @@ app.use(expressValidator({
     }
 }));
 
+// Passport Config
+require('./config/passport')(passport);
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function (req, res, next) {
+    res.locals.user = req.user || null;
+    next();
+});
 
 // Home Router
 app.get('/', function (req, res) {
@@ -79,8 +92,10 @@ app.get('/', function (req, res) {
 });
 
 // Route Files
-let articles = require('./routes/articles');
-app.use('/articles', articles);
+let articles = require("./routes/articles");
+let users = require("./routes/users");
+app.use("/articles", articles);
+app.use("/users", users);
 
 // Start Server
 app.listen(3000, function () {

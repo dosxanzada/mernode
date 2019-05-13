@@ -1,13 +1,20 @@
 extends layout
 
 block content
-    .container
-        .row
-            .col-md-6
-                h1= article.title
-                h5 Written by #{article.author}
-                p= article.body
+    //<img src="/../uploads/1557753934582-photo-93916487_365136632111.jpg" alt="asd">
+    //img(src='/../uploads/1557753934582-photo-93916487_365136632111.jpg', alt='asasd')
 
-                hr
-                a.btn.btn-outline-warning(href="/articles/edit/"+article._id) Edit
-                a.btn.btn-outline-danger.delete-art-btn(href="#", data-id=article._id) Delete
+    .articlebck
+        .container
+            .row.pt-5.pb-5
+                .col-md-6
+                    h1= article.title
+                    p.media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+                        strong.d-block.text-gray-dark #{user.lastName} #{user.firstName}
+                    br
+                    p= article.body
+                    //p= article.articleImage
+                    //img(src="/..", alt="", srcset="")
+                .col-md-6
+
+

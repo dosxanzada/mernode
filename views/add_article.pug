@@ -2,16 +2,19 @@ extends layout
 
 block content
         h1 #{title}
-        form.col-md-4(method="POST", action="/articles/add")
+        form.col-md-4(method="POST", action="/articles/add", enctype="multipart/form-data")
                 #form-group
                         label Title:
                         input.form-control(name="title", type="text")
-                #form-group
-                        label Author:
-                        input.form-control(name="author", type="text")
+                
                 #form-group
                         label Body:
                         textarea.form-control(name="body", cols="30", rows="5")
                 br
+
+                .input-group.mb-3
+                        .custom-file
+                                input#inputGroupFile01.custom-file-input(type="file", name="articleImage", aria-describedby="inputGroupFileAddon01")
+                                label.custom-file-label(for='inputGroupFile01') Сурет жүктеу
+
                 input.btn.btn-primary(type="submit", value="Submit")
-                
