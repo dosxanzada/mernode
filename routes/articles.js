@@ -1,14 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const path = require("path");
 var fs = require('fs');
 const multer = require('multer');
 
 let Article = require('../models/article');
 let User = require('../models/user');
 
+let pathimgjoin = path.join(__dirname, '../public/uploads/');
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        // app.use(express.static(path.join(__dirname, "public")));
+        // cb(null, 'uploads/');
+        // cb(null, '/public/uploads/');
+        cb(null, pathimgjoin);
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname);
