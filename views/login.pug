@@ -1,0 +1,18 @@
+extends layout
+
+block content
+        .container
+                .row
+                        .col-md-12
+                                form.form-signin(method="POST", action="/users/login")
+                                        .logo-anim
+                                                i.fas.fa-spinner.fa-spin.fa-5x
+                                        h1.h3.mb-3.font-weight-normal.text-center Жүйеге кіріңіз
+                                        //- input.form-control(name="username", type="text")
+                                        input.form-control.mt-5(name="username", type='text', placeholder='Пайдаланушы аты', autofocus='')
+                                        input.form-control(name="password", type='password', placeholder='Құпиясөз')
+                                        button.btn.btn-lg.btn-primary.btn-block.mt-4(type='submit') Жүйеге кіру
+                                        br
+                                        p Немесе 
+                                                a(href="/users/register") жүйеге тіркелу 
+                                        //- a.btn.btn-primary.my-2.my-sm-0(href="/users/register") Жүйеге тіркелу 

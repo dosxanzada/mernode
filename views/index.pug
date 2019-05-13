@@ -15,29 +15,23 @@ block content
                         | Білім алуды қазір бастаңыз
     h2.courses.text-center.mt-5.mb-5 Оқу курстары
 
-    block course-list
-        .container
-            .card-deck
-                each article, i in articles
-                        a(href="/articles/"+article._id)
-                            .card
-                                img.card-img-top(src="/img/card5.jpg" alt="...")
-                                a(href="/articles/"+article._id)
-                                    .card-body
-                                        h5.card-title
-                                            a(href="/articles/"+article._id)= article.title
-                                        p.card-text= article.body
-                                    .card-footer.text-muted
-                                        p= article.author
+    .container
+        .card-deck
+            each article, i in articles
+                    a(href="/articles/"+article._id)
+                        .card
+                            img.card-img-top(src="/img/card5.jpg" alt="...")
+                            a(href="/articles/"+article._id)
+                                .card-body
+                                    h5.card-title
+                                        a(href="/articles/"+article._id)= article.title
+                                    p.card-text= article.body
+                                .card-footer.text-muted
+                                    p= article.author
 
-        .text-center.mt-3.mb-5
-            button.btn.btn-outline-primary.my-2.my-sm-0(type="submit")
-                | Барлық курстар
-
-        //- ul.list-group
-        //- each article, i in articles
-        //-     li.list-group-item
-        //-         a(href="/articles/"+article._id)= article.title
+    .text-center.mt-3.mb-5
+        button.btn.btn-outline-primary.my-2.my-sm-0(type="submit")
+            | Барлық курстар
 
     .div.info.pt-5.pb-5
         h2.courses.text-center.mb-5 Жоба туралы

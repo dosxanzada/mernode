@@ -1,0 +1,76 @@
+extends layout
+
+block content
+
+    .container.mt-5.mb-5
+        .row
+            .col-md-4
+                .card.profile-img(style='width: 18rem;')
+                    if !user.img
+                        img.card-img-top.mt-3(src='http://www.esek.org.gr/images/ESET/eset_user.png', alt='...')
+                    else
+                        img.card-img-top.mt-3(src='http://www.esek.org.gr/images/ESET/eset_user.png', alt='...')
+                    .card-body.text-center
+                        user
+                            if !user.lastName && !user.firstName
+                                h5.card-title= user.username
+                            else
+                                h5.card-title= user.lastName + " " + user.firstName
+                            if user.role == "teacher"
+                                p.card-text Мұғалім
+                            else
+                                p.card-text Студент
+                            if !user.lastName && !user.firstName
+                                a.btn.btn-outline-warning(href="/users/edit/"+user._id) Жеке профильді толтыру
+                            else
+                                a.btn.btn-outline-info(href="/users/edit/"+user._id) Жеке профильді өзгерту
+                            
+            .col-md-8.card
+                .mt-3.bg-white.rounded.shadow-sm
+                    .card-body
+                        h6.border-bottom.border-gray.pb-2.mb-0 Іске кірісіңіз
+                        br
+                        if user.role == "teacher"
+                            a.btn.btn-success(href="/articles/add") Жаңа курс ашу
+                        else
+                            a.btn.btn-success(href="/articles/add") Жаңа курсқа қосылу
+                            a.btn.btn-success(href="/articles/add") Үй тапсырмалары
+
+
+
+                    .card-body
+                        h6.border-bottom.border-gray.pb-2.mb-0 Менің курстарым
+                        br
+
+                        each article, i in articles
+                            if article.author == user.id
+                                .media.text-muted.pt-3
+                                    svg.bd-placeholder-img.mr-2.rounded(width='32', height='32', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 32x32')
+                                        title Placeholder
+                                        rect(width='100%', height='100%', fill='#007bff')
+                                        text(x='50%', y='50%', fill='#007bff', dy='.3em') 32x32
+                                    p.media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
+                                        a(href="/articles/"+article._id)
+                                            strong.d-block.text-gray-dark= article.title
+
+                                    //p= article.body
+
+    .jumbotron
+        h2.courses.text-center.mb-5 Оқу курстары
+        .container
+            .card-deck
+                each article, i in articles
+                    a(href="/articles/"+article._id)
+                        .card
+                            img.card-img-top(src="/img/card5.jpg" alt="...")
+                            a(href="/articles/"+article._id)
+                                .card-body
+                                    h5.card-title
+                                        a(href="/articles/"+article._id)= article.title
+                                    p.card-text= article.body
+                                .card-footer.text-muted
+                                    p= article.author
+
+        .text-center.mt-3
+            button.btn.btn-outline-primary.my-2.my-sm-0(type="submit")
+                | Барлық курстар

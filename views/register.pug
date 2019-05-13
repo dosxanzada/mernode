@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-md-12
+                form.form-signin(method="POST", action="/users/register")
+                    .logo-anim
+                        i.fas.fa-spinner.fa-spin.fa-5x
+                    h1.h3.mb-3.font-weight-normal.text-center Жүйеге тіркелу
+                    input.form-control(name="username", type='text', placeholder='Пайдаланушы аты', autofocus='')
+                    input.form-control(name="password", type='password', placeholder='Құпиясөз')
+                    input.form-control(name="confirmPassword", type='password', placeholder='Құпиясөзді қайталаңыз')
+                    input.form-control(name="email", type='email', placeholder='Электронды пошта')
+                    select.custom-select(name="role")
+                        //- each val in ["student", "teacher"]
+                        //-     option(value="student")
+                        //-     option(value="teacher")
+                        
+                        option(value="") Пайдаланушы рөлін таңдаңыз
+                        option(value="student") Студент
+                        option(value="teacher") Мұғалім
+                    button.btn.btn-lg.btn-primary.btn-block.mt-4(type='submit') Жүйеге тіркелу
+                    br
+                    p Немесе 
+                            a(href="/users/login") жүйеге кіру
+
+
+        //- form.col-md-4(method="POST", action="/users/register")
+        //-     #form-group
+        //-         label Username:
+        //-         input.form-control(name="username", type="text")
+        //-     #form-group
+        //-         label Password:
+        //-         input.form-control(name="password", type="password")
+        //-     #form-group
+        //-         label Confirm Password:
+        //-         input.form-control(name="confirmPassword", type="password")
+        //-     #form-group
+        //-         label Email:
+        //-         input.form-control(name="email", type="email")
+        //-     br
+        //-     input.btn.btn-primary(type="submit", value="Submit")

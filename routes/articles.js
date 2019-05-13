@@ -65,7 +65,7 @@ router.post('/add', upload.single('articleImage'), function (req, res) {
                 return;
             } else {
                 req.flash('success', 'Тақырып қосылды');
-                res.redirect('/');
+                res.redirect('/users/adminpage');
             }
         });
     }
@@ -76,7 +76,7 @@ router.get('/edit/:id', ensureAuthenticated, function (req, res) {
     Article.findById(req.params.id, function (err, article) {
         if (article.author != req.user._id) {
             req.flash('danger', 'Жалғастыру үшін жүйеге кіріңіз');
-            res.redirect('/');
+            res.redirect('/users/admin_page');
         } else {
             res.render('edit_article', {
                 title: 'Тақырыпты өзгерту',

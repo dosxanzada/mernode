@@ -15,6 +15,12 @@ block content
                     p= article.body
                     //p= article.articleImage
                     //img(src="/..", alt="", srcset="")
+                    a.btn.btn-outline-light.mt-1(href="/articles/edit/" + article._id)
+                        <i class="fas fa-edit"> &nbsp; Өзгерту</i>
+                    a.btn.btn-outline-light.mt-1.ml-3.delete-art-btn(href="#", data-id=article._id)
+                        <i class="fas fa-eraser"> &nbsp; Жою</i>
+                    a.btn.btn-outline-light.mt-1.ml-3.delete-art-btn(href="#", data-id=article._id)
+                        <i class="fas fa-user-graduate"> &nbsp; Курс студенттері</i>
                 .col-md-6
 
 
