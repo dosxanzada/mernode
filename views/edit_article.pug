@@ -1,16 +1,27 @@
 extends layout
 
 block content
-    h1 #{title}
-    form.col-md-4(method="POST", action="/articles/edit/"+article._id)
-        #form-group
-            label Title:
-            input.form-control(name="title", type="text", value=article.title)
-        #form-group
-            label Body:
-            textarea.form-control(name="body", cols="30", rows="5")= article.body
-        #form-group
-            label Author:
-            input.form-control.disabled(name="author", type="text", value=article.author)
+
+    .container
         br
-        input.btn.btn-primary(type="submit", value="Submit")
+        form.col-md-12(method="POST", action="/articles/edit/" + article._id)
+
+            label Курс атауы:
+            input.form-control(name="title", type="text", value=article.title)
+
+            label Курс туралы ақпарат:
+            textarea.form-control(name="body", cols="30", rows="5")= article.body
+
+            label Авторы:
+            input.form-control.disabled(name="author", type="text", value=article.author)
+            br
+
+            .input-group.mb-3
+                .custom-file
+                    input#inputGroupFile01.custom-file-input(type="file", name="articleImage", aria-describedby="inputGroupFileAddon01")
+                    label.custom-file-label(for='inputGroupFile01') Сурет жүктеу
+            br
+            input.btn.btn-primary(type="submit", value="Сақтау")
+            //input.btn.btn-secondary.ml-3(type="cancel", value="Артқа")
+
+            a.btn.btn-secondary.ml-3(href="/articles/" + article._id) Артқа қайту

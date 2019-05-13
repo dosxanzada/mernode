@@ -2,7 +2,7 @@ $(document).ready(function () {
     // alert("1aaaas");
 
     // $('.alert').fadeOut(2000);
-    $('.alert').delay(2000).animate({"right": "-500px"}, 1500);
+    $('.alert').delay(2000).animate({"right": "-1500px"}, 2500);
 
 
     $('.delete-art-btn').on('click', function (e) {

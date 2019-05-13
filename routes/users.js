@@ -2,9 +2,37 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const passport = require('passport');
+var fs = require('fs');
+const multer = require('multer');
 
 let User = require("../models/user");
 let Article = require('../models/article');
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+};
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
 
 // Register Form
 router.get("/register", function (req, res) {
@@ -109,31 +137,6 @@ router.get("/adminpage", function (req, res) {
             });
         }
     });
-
-
-    // Article.find({}, function (err, articles) {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         res.render("index", {
-    //             title: "SmartBilim - қашықтықтан оқытуды басқару",
-    //             articles: articles
-    //         });
-    //     }
-    // });
-
-    // Article.findById(req.params.id, function (err, article) {
-    //     const img = Article.findById(req.params.id)
-    //         .select('name _id articleImage')
-    //     User.findById(article.author, function (err, user) {
-    //         res.render('admin_page', {
-    //             title: 'Пайдаланушы парақшасы',
-    //             article: article,
-    //             author: user.username,
-    //             articleImg: img,
-    //         });
-    //     });
-    // });
 });
 
 // Request - Updated User
@@ -147,7 +150,7 @@ router.get('/edit/:id', ensureAuthenticated, function (req, res) {
 });
 
 // Updated User
-router.post('/edit/:id', function (req, res) {
+router.post('/edit/:id', upload.single('avatar'), function (req, res) {
     const role = req.body.role;
     let user = {};
 
@@ -157,11 +160,13 @@ router.post('/edit/:id', function (req, res) {
     user.lastName = req.body.lastName;
     user.firstName = req.body.firstName;
     user.dateBirth = req.body.dateBirth;
+    // user.avatar = req.file.path;
 
     let query = {
         _id: req.params.id
     };
 
+    let errors = req.validationErrors();
     req.checkBody('role', 'Пайдаланушы рөлін таңдаңыз').notEmpty();
 
     User.update(query, user, function (err) {

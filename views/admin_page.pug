@@ -9,7 +9,10 @@ block content
                     if !user.img
                         img.card-img-top.mt-3(src='http://www.esek.org.gr/images/ESET/eset_user.png', alt='...')
                     else
-                        img.card-img-top.mt-3(src='http://www.esek.org.gr/images/ESET/eset_user.png', alt='...')
+                        - let str1 = user.avatar.replace(/C:\\Users\\Admin\\Desktop\\mernode\\public/, '');
+                        - let str2 = str1.replace(/\\/g, '/');
+                            img.course-img(src=str2, alt="article image", style="width: 50px; height: 40px;")
+
                     .card-body.text-center
                         user
                             if !user.lastName && !user.firstName
@@ -26,7 +29,7 @@ block content
                                 a.btn.btn-outline-info(href="/users/edit/"+user._id) Жеке профильді өзгерту
                             
             .col-md-8.card
-                .mt-3.bg-white.rounded.shadow-sm
+                .mt-3.mb-3.bg-white.rounded.shadow-sm
                     .card-body
                         h6.border-bottom.border-gray.pb-2.mb-0 Іске кірісіңіз
                         br

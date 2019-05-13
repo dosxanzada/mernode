@@ -1,21 +1,9 @@
 let mongoose = require("mongoose");
 
 let lectionSchema = new mongoose.Schema({
-    title: {
+    textBody: {
         type: String,
         required: true
-    },
-    body: {
-        type: String,
-        required: true
-    },
-    articleBy: {
-        type: String,
-        required: true
-    },
-    articleImage:{
-        type: String,
-        required: false
     }
 });
 

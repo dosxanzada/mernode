@@ -40,7 +40,7 @@ const upload = multer({
 // Request - Add Article 
 router.get('/add', ensureAuthenticated, function (req, res) {
     res.render('add_article', {
-        title: 'Add article'
+        title: 'Жаңа курс қосу'
     });
 });
 
@@ -93,11 +93,12 @@ router.get('/edit/:id', ensureAuthenticated, function (req, res) {
 });
 
 // Updated Article
-router.post('/edit/:id', function (req, res) {
+router.post('/edit/:id', upload.single('articleImage'), function (req, res) {
     let article = {};
     article.title = req.body.title;
     article.author = req.body.author;
     article.body = req.body.body;
+    article.articleImage = req.file.path;
 
     let query = {
         _id: req.params.id
@@ -109,7 +110,7 @@ router.post('/edit/:id', function (req, res) {
             return;
         } else {
             req.flash('success', 'Тақырып жаңартылды');
-            res.redirect('/');
+            res.redirect('/users/admin_page');
         }
     });
 });

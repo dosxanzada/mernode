@@ -45,9 +45,7 @@ router.post('/add', upload.single('articleImage'), function (req, res) {
     console.log(req.file);
     req.checkBody('title', 'Тақырып атауын енгізіңіз').notEmpty();
     req.checkBody('body', 'Енгізіңіз').notEmpty();
-
     let errors = req.validationErrors();
-
     if (errors) {
         res.render('add_article', {
             title: 'Жаңа тақырып қосу',
@@ -88,11 +86,13 @@ router.get('/edit/:id', ensureAuthenticated, function (req, res) {
 });
 
 // Updated Article
-router.post('/edit/:id', function (req, res) {
+router.post('/edit/:id', upload.single('articleImage'), function (req, res) {
     let article = {};
     article.title = req.body.title;
     article.author = req.body.author;
     article.body = req.body.body;
+    article.articleImage = req.file.path;
+
 
     let query = {
         _id: req.params.id

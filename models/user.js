@@ -20,7 +20,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    img:{
+    avatar:{
         type: String
     },
     lastName:{
@@ -32,7 +32,6 @@ const UserSchema = mongoose.Schema({
     dateBirth:{
         type: Date
     }
-
 });
 
 const User = module.exports = mongoose.model("User", UserSchema);

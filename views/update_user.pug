@@ -5,9 +5,15 @@ block content
         .row
             .col-md-12
                 form.form-signin(method="POST", action="/users/edit/"+user._id)
+                    h1.h3.mb-3.font-weight-normal.text-center Пайдаланушы профилін өзгерту
                     .logo-anim
                         i.fas.fa-spinner.fa-spin.fa-5x
-                    h1.h3.mb-3.font-weight-normal.text-center Пайдаланушы профилін өзгерту
+                    .input-group.mb-3
+                        .custom-file
+                            input#inputGroupFile01.custom-file-input(type="file", name="avatar")
+                            label.custom-file-label Сурет жүктеу
+
+
                     input.form-control(name="username", type='text', placeholder='Пайдаланушы аты', value=user.username)
                     input.form-control(name="email", type='email', placeholder='Электронды пошта', value=user.email)
                     .alert.alert-danger(role='alert') Пайдаланушы аты мен электронды пошта өзгертуге болмайды
