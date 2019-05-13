@@ -142,13 +142,23 @@ router.delete('/:id', function (req, res) {
 router.get('/:id', function (req, res) {
     Article.findById(req.params.id, function (err, article) {
         const img = Article.findById(req.params.id)
-            .select('name _id articleImage')
+            .select('name _id articleImage');
+
+        console.log(article.articleImage);
+        const str1 = article.articleImage.replace(/C:\\Users\\Admin\\Desktop\\mernode\\public/, '');
+        console.log(str1);
+        const str2 = str1.replace(/\\/g, '/');
+        console.log(str2);
+        // mystring.replace(/\./g,' ')
+        // str.replace(/C:\\Users\\Admin\\/, '');
+
         User.findById(article.author, function (err, user) {
             res.render('article', {
                 title: article.title,
                 article: article,
                 author: user.username,
                 articleImg: img,
+                immp: str2
             });
         });
     });

@@ -3,7 +3,6 @@ extends layout
 block content
     //<img src="/../uploads/1557753934582-photo-93916487_365136632111.jpg" alt="asd">
     //img(src='/../uploads/1557753934582-photo-93916487_365136632111.jpg', alt='asasd')
-
     .articlebck
         .container
             .row.pt-5.pb-5
@@ -13,10 +12,6 @@ block content
                         strong.d-block.text-gray-dark #{user.lastName} #{user.firstName}
                     br
                     p= article.body
-                    - let imgpath= article.articleImage
-                    p= imgpath
-                    //p= article.articleImage
-                    //img(src="/..", alt="", srcset="")
                     a.btn.btn-outline-light.mt-1(href="/articles/edit/" + article._id)
                         <i class="fas fa-edit"> &nbsp; Өзгерту</i>
                     a.btn.btn-outline-light.mt-1.ml-3.delete-art-btn(href="#", data-id=article._id)
@@ -24,7 +19,7 @@ block content
                     a.btn.btn-outline-light.mt-1.ml-3.delete-art-btn(href="#", data-id=article._id)
                         <i class="fas fa-user-graduate"> &nbsp; Курс студенттері</i>
                 .col-md-6
-
-
-                    //img(src='/uploads/1557773034812-photo-93916487_365136632111.jpg', alt='')
-                    img(src={imgpath}, alt='')
+                    // - let imgpath= article.articleImage
+                    // p= imgpath
+                    // p= immp
+                    //img(src=immp, alt="asd")

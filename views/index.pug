@@ -20,7 +20,12 @@ block content
             each article, i in articles
                     a(href="/articles/"+article._id)
                         .card
-                            img.card-img-top(src="/img/card5.jpg" alt="...")
+                            - let str1 = article.articleImage.replace(/C:\\Users\\Admin\\Desktop\\mernode\\public/, '');
+                            - let str2 = str1.replace(/\\/g, '/');
+
+                            img.course-img(src=str2, alt="article image")
+                            //p= str2
+
                             a(href="/articles/"+article._id)
                                 .card-body
                                     h5.card-title

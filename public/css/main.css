@@ -87,10 +87,6 @@ footer {
     background: #f8f9fa;
 }
 
-/*.delete-art-btn {*/
-    /*margin-left: 15px;*/
-/*}*/
-
 .alerting {
     width: 350px;
     position: fixed;
@@ -191,4 +187,12 @@ a {
     width: 100%;
     background: url("../img/artimg2.jpg") center center no-repeat;
     background-size: cover;
+}
+
+.articlebck img{
+    width: 100px;
+}
+
+.course-img{
+    width: 100%;
 }

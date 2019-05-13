@@ -45,28 +45,33 @@ block content
                         each article, i in articles
                             if article.author == user.id
                                 .media.text-muted.pt-3
-                                    svg.bd-placeholder-img.mr-2.rounded(width='32', height='32', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 32x32')
-                                        title Placeholder
-                                        rect(width='100%', height='100%', fill='#007bff')
-                                        text(x='50%', y='50%', fill='#007bff', dy='.3em') 32x32
-                                    p.media-body.pb-3.mb-0.small.lh-125.border-bottom.border-gray
-                                        a(href="/articles/"+article._id)
-                                            strong.d-block.text-gray-dark= article.title
+                                    - let str1 = article.articleImage.replace(/C:\\Users\\Admin\\Desktop\\mernode\\public/, '');
+                                    - let str2 = str1.replace(/\\/g, '/');
+                                        img.course-img(src=str2, alt="article image", style="width: 50px; height: 40px;")
 
-                                    //p= article.body
+                                        p.media-body.pb-3.ml-3.mb-0.small.lh-125.border-bottom.border-gray
+                                            a(href="/articles/"+article._id)
+                                                strong.d-block.text-gray-dark= article.title
+
+                                        //p= article.body
 
     .jumbotron
         h2.courses.text-center.mb-5 Оқу курстары
         .container
             .card-deck
                 each article, i in articles
-                    a(href="/articles/"+article._id)
+                    a(href="/articles/" + article._id)
                         .card
-                            img.card-img-top(src="/img/card5.jpg" alt="...")
-                            a(href="/articles/"+article._id)
+                            - let str1 = article.articleImage.replace(/C:\\Users\\Admin\\Desktop\\mernode\\public/, '');
+                            - let str2 = str1.replace(/\\/g, '/');
+
+                            img.course-img(src=str2, alt="article image")
+                            //p= str2
+
+                            a(href="/articles/" + article._id)
                                 .card-body
                                     h5.card-title
-                                        a(href="/articles/"+article._id)= article.title
+                                        a(href="/articles/" + article._id)= article.title
                                     p.card-text= article.body
                                 .card-footer.text-muted
                                     p= article.author
